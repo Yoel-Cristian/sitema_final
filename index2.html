@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="http://localhost/sistema_2/css/index.css" />
+</head>
+
+<body>
+  <div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="overlay-content">
+      <a onclick="cargarNuevaPagina('index_cliente/index_productos.html','PRODUCTOS DE LA TIENDA')">PRODUCTOS</a>
+      <a onclick="cargarNuevaPagina('','ACERCA DE NOSOTROS')">ACERCA DE NOSOTROS</a>
+
+      >
+    </div>
+  </div>
+  <span id="menu" style="font-size:  30px; cursor: pointer" onclick="openNav()">&#9776; MENU</span>
+  <iframe id="miFrame" src=""></iframe>
+
+  <script>
+    function openNav() {
+      document.getElementById("myNav").style.width = "30%";
+    }
+
+    function closeNav() {
+      document.getElementById("myNav").style.width = "0%";
+    }
+    function cargarNuevaPagina(r, titulo) {
+      closeNav();
+      document.getElementById("menu").innerHTML = "&#9776" + titulo;
+      var iframe = document.getElementById("miFrame");
+      iframe.src = r;
+      iframe.style.display = "block";
+    }
+  </script>
+</body>
+
+</html>

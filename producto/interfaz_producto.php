@@ -29,7 +29,7 @@
       <label for="nombre">Nombre:</label>
       <input type="text" name="nombre" id="nombre" /><br />
 
-      <label for="precio">Precio:</label>
+      <label for="precio">Precio ($):</label>
       <input type="number" step="0.01" name="precio" id="precio" /><br />
 
       <label for="stock">Stock:</label>
@@ -78,6 +78,8 @@
                           $conexion->close();
                           ?>
       </select><br /><br />
+      <label for="imagen">Imagen:</label>
+      <input type="file" name="imagen" id="imagen" accept="image/*" /><br /><br />
 
       <button type="submit">Enviar</button>
     </form>
@@ -116,8 +118,8 @@
       <label for="nombre">Nombre:</label>
       <input type="text" name="nombre" id="nombre1" /><br />
 
-      <label for="precio">Precio:</label>
-      <input type="number" step="0.01" name="precio1" id="precio1" /><br />
+      <label for="precio">Precio ($):</label>
+      <input type="number" step="0.01" name="precio" id="precio1" /><br />
 
       <label for="stock">Stock:</label>
       <input type="number" name="stock" id="stock1" min="0" /><br />
@@ -165,6 +167,9 @@
                     $conexion->close();
                     ?>
       </select><br /><br />
+      <label for="imagen">Imagen:</label>
+      <input type="file" name="imagen" id="imagen" accept="image/*" /><br />
+
       <button type="submit">Enviar</button>
     </form>
   </div>
@@ -221,72 +226,67 @@
     $(document).ready(function() {
       $("#1").submit(function(event) {
         event.preventDefault();
-        var nombre = $("#nombre").val();
-        var precio = $("#precio").val();
-        var stock = $("#stock").val();
-        var rut_proveedor = $("#rut_proveedor").val();
-        var id_categoria = $("#id_categoria").val();
-        // Crea un objeto de datos
-        var datos = {
-          nombre: nombre,
-          precio: precio,
-          stock: stock,
-          rut_proveedor: rut_proveedor,
-          id_categoria: id_categoria
+        var formData = new FormData(this);
 
-        };
-        $.ajax({
-          type: "POST",
-          url: "insertar_producto.php",
-          data: datos,
-          success: function(response) {
-          // Muestra la ventana emergente
-          $("#popup").fadeIn();
+$.ajax({
+    type: "POST",
+    url: "insertar_producto.php",
+    data: formData,
+    processData: false, // Evitar el procesamiento automático de datos
+    contentType: false, // Evitar el encabezado Content-Type por defecto
+    success: function(response) {
+        // Manejar la respuesta del servidor aquí
+        console.log(response);
+        // Limpia el formulario si es necesario
+        $("#popup").fadeIn();
           // Cierra la ventana emergente 
           setTimeout(function() {
             $("#popup").fadeOut();
           }, 2000);           
          $("#1")[0].reset();
-
-          },
-        });
+    },
+    error: function(xhr, status, error) {
+        // Manejar errores si es necesario
+        console.error(error);
+    }
+});
+  
       });
     });
 
     $(document).ready(function() {
       $("#2").submit(function(event) {
         event.preventDefault();
-        var id_producto_actualizar=$("#id_producto1").val();
-        var nombre = $("#nombre1").val();
-        var precio = $("#precio1").val();
-        var stock = $("#stock1").val();
-        var rut_proveedor = $("#rut_proveedor1").val();
-        var id_categoria = $("#id_categoria1").val();
-        // Crea un objeto de datos
-        var datos = {
-          id_producto_actualizar: id_producto_actualizar,
-          nombre: nombre,
-          precio: precio,
-          stock: stock,
-          rut_proveedor: rut_proveedor,
-          id_categoria: id_categoria
+        var formData = new FormData(this);
 
-        };
+
         $.ajax({
-          type: "POST",
-          url: "actualizar_producto.php",
-          data: datos,
-          success: function(response) {
-          // Muestra la ventana emergente
-          $("#popup").fadeIn();
+    type: "POST",
+    url: "actualizar_producto.php",
+    data: formData,
+    processData: false, // Evitar el procesamiento automático de datos
+    contentType: false, // Evitar el encabezado Content-Type por defecto
+    success: function(response) {
+        // Manejar la respuesta del servidor aquí
+        console.log(response);
+        // Limpia el formulario si es necesario
+        $("#popup").fadeIn();
           // Cierra la ventana emergente 
           setTimeout(function() {
             $("#popup").fadeOut();
           }, 2000);           
          $("#2")[0].reset();
+    },
+    error: function(xhr, status, error) {
+        // Manejar errores si es necesario
+        console.error(error);
+    }
+});
+  
 
-          },
-        });
+
+
+
       });
     });
 

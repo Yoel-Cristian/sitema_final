@@ -1,57 +1,106 @@
+<!-- 
+Online HTML, CSS and JavaScript editor to run code online.
+-->
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="http://localhost/sistema/css/index.css"
-    />
-  </head>
-  <body>
-    <div id="myNav" class="overlay">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
-        >&times;</a
-      >
-      <div class="overlay-content">
-        <a onclick="cargarNuevaPagina('producto/interfaz_producto.php','PRODUCTOS')"
-          >PRODUCTOS</a
-        >
-        <a onclick="cargarNuevaPagina('cliente/interfaz_cliente.php','CLIENTES')"
-          >CLIENTES</a
-        >
-        <a onclick="cargarNuevaPagina('proveedor/interfaz_proveedor.php','PROVEEDORES')"
-          >PROVEEDORES</a
-        >
-        <a onclick="cargarNuevaPagina('categoria/interfaz_categoria.php','CATEGORIA')"
-          >CATEGORIA</a
-        >
-        <a onclick="cargarNuevaPagina('venta/interfaz_ventas.php', 'VENTAS' )">VENTAS</a>
-        <a onclick="cargarNuevaPagina('venta_detalle copy/interfaz_detalle.php' , 'Detalle De Venta')"
-          >DETALLE DE VENTA</a
-        >
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="http://localhost/sistema_2/css/style.css"
+/>
+  <title>inicio</title>
+</head>
+
+<body>
+
+  
+    <div class="container" id="container">
+
+      
+      <div class="form-container sign-up-container">
+        <form id="registrar">
+          <h1>Registrarse</h1>
+          <input id="nombre" name="nombre" type="text" placeholder="Name" />
+          <input id="email" name="email" type="email" placeholder="Email" />
+          <input id="contraseña" name="contrasena" type="password" placeholder="Password" />
+          <input id="rol" name="rol" type="text" placeholder="EMPLEADO o CLIENTE" />
+          <input type="submit" id="lila " value="Registrar">
+        </form>
+      </div>
+
+
+
+      <div class="form-container sign-in-container">
+        <form action="usuario_buscar.php" method="post">
+          <h1>Iniciar Sesión</h1>
+   
+          <input name="email" type="email" placeholder="Email" />
+          <input name="contrasena" type="password" placeholder="Password" /> <br>
+          <button>Iniciar sesión</button>
+        </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1>Ya Te Registraste ?</h1>
+            <br>
+         
+            <button class="ghost" id="signIn">Inicia sesión</button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>Si no tienes cuenta REGISTRATE</h1>
+            <p>"DEPEDIENDO  de su rol podra acceder al sistema"</p>
+            <button class="ghost" id="signUp">Registrar</button>
+          </div>
+        </div>
       </div>
     </div>
-    <span id="menu" style="font-size:  30px; cursor: pointer" onclick="openNav()"
-      >&#9776; MENU</span
-    >
-    <iframe id="miFrame" src="" ></iframe>
 
-    <script>
-      function openNav() {
-        document.getElementById("myNav").style.width = "30%";
-      }
 
-      function closeNav() {
-        document.getElementById("myNav").style.width = "0%";
+  <script src="css/script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+
+$(document).ready(function() {
+  $("#registrar").submit(function(event) {
+    event.preventDefault();
+    var nombre = $("#nombre").val();
+    var email = $("#email").val();
+    var contraseña = $("#contraseña").val();
+    var rol = $("#rol").val();
+
+    // Crea un objeto de datos
+    var datos = {
+      nombre: nombre,
+      email: email,
+      contrasena: contraseña,
+      rol: rol
+    };
+    console.log(datos);
+
+    $.ajax({
+      type: "POST",
+      url: "usuarios.php",
+      data: datos,
+      success: function(response) {
+       
+      },
+      error: function(xhr, textStatus, errorThrown) {
+        console.error("Error en la solicitud:", errorThrown);
+        // Puedes mostrar un mensaje de error al usuario si lo deseas
+        alert("Error en la solicitud");
       }
-      function cargarNuevaPagina(r,titulo) {
-        closeNav();
-        document.getElementById("menu").innerHTML="&#9776"+titulo;
-        var iframe = document.getElementById("miFrame");
-        iframe.src = r;
-        iframe.style.display = "block";
-      }
-    </script>
-  </body>
+    });
+  });
+});
+
+
+  </script>
+</body>
+
 </html>

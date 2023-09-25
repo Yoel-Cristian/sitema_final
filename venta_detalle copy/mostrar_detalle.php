@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" type="text/css" href="http://localhost/sistema/css/tablas.css">
+<link rel="stylesheet" type="text/css" href="http://localhost/sistema_2/css/tablas.css">
 
 <?php
 $conexion = new mysqli("localhost", "root", "", "sistema");

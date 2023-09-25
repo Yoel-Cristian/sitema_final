@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="http://localhost/sistema/css/tablas.css">
+<link rel="stylesheet" type="text/css" href="http://localhost/sistema_2/css/tablas.css">
 
 
 <?php
@@ -11,7 +11,7 @@ $result = $conexion->query($sql2);
 
 if ($result->num_rows > 0) {
     echo "<table class='tabla'>";
-    echo "<tr><th>ID</th><th>Nombre</th><th>Precio</th><th>Stock</th><th>Rut_Proveedor</th><th>ID_Categoría</th></tr>";
+    echo "<tr><th>ID</th><th>Nombre</th><th>Precio</th><th>Stock</th><th>Rut_Proveedor</th><th>ID_Categoría</th> <th>Imagen</th></tr>";
 
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
@@ -21,6 +21,7 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["stock"] . "</td>";
         echo "<td>" . $row["rut_proveedor"] . "</td>";
         echo "<td>" . $row["id_categoria"] . "</td>";
+        echo "<td> <img src='" . $row["imagen"] . " ' width=150px height=auto></td>";
         echo "</tr>";
     }
     echo "</table>";

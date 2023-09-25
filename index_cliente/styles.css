@@ -1,0 +1,141 @@
+/* Estilos para la tabla de productos */
+#menu {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f4f4f4;
+}
+
+.producto {
+    padding: 20px;
+    text-align: center;
+    border: 5px solid #ddd;
+    background-color: #b4b2b2fc; /* Cambia el color de fondo a gris claro */
+}
+
+/* Estilos para la imagen */
+.producto img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 10px;
+    border: 3px solid black;
+}
+
+/* Estilos para el nombre, precio y stock */
+.producto p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* Alinea el texto en el centro */
+.producto p {
+    text-align: center;
+}
+
+/* Estilos para los íconos */
+.producto .icon {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+/* Estilos para los íconos de precio y stock */
+.producto .icon-price {
+    color: #008000; /* Color verde para el precio */
+}
+
+.producto .icon-stock {
+    color: #ff0000; /* Color rojo para el stock */
+}
+
+
+/* Estilos para el botón "Añadir a carrito" */
+.btn-carrito {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.btn-carrito:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el carrito de compras */
+.carrito_compra {
+    background-color: #333;
+    text-align: right;
+    color: #fff;
+    padding: 10px;
+    font-size: 24px;
+    align-items: center;
+}
+
+/* Estilos para el icono de carrito */
+.icon-cart {
+    font-size: 36px;
+    margin-right: 10px;
+}
+
+.carrito_compra button {
+    border: 0px solid transparent;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    font-size: 24px;
+
+}
+
+
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:rgb(105,105,105);
+    background-color:rgb(105,105,105, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+  
+  .overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #201f1f;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .overlay a:hover,
+  .overlay a:focus {
+    color: #f1f1f1;
+  }
+  
+  .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .overlay a {
+      font-size: 20px;
+    }
+    .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+    }
+  }

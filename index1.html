@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="http://localhost/sistema/css/index.css"
+    />
+  </head>
+  <body>
+    <div id="myNav" class="overlay">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+      <div class="overlay-content">
+        <a onclick="cargarNuevaPagina('producto/interfaz_producto.php','PRODUCTOS')"
+          >PRODUCTOS</a
+        >
+        <a onclick="cargarNuevaPagina('cliente/interfaz_cliente.php','CLIENTES')"
+          >CLIENTES</a
+        >
+        <a onclick="cargarNuevaPagina('proveedor/interfaz_proveedor.php','PROVEEDORES')"
+          >PROVEEDORES</a
+        >
+        <a onclick="cargarNuevaPagina('categoria/interfaz_categoria.php','CATEGORIA')"
+          >CATEGORIA</a
+        >
+        <a onclick="cargarNuevaPagina('venta/interfaz_ventas.php', 'VENTAS' )">VENTAS</a>
+        <a onclick="cargarNuevaPagina('venta_detalle copy/interfaz_detalle.php' , 'Detalle De Venta')"
+          >DETALLE DE VENTA</a
+        >
+      </div>
+    </div>
+    <span id="menu" style="font-size:  30px; cursor: pointer" onclick="openNav()"
+      >&#9776; MENU</span
+    >
+    <iframe id="miFrame" src="" ></iframe>
+
+    <script>
+      function openNav() {
+        document.getElementById("myNav").style.width = "30%";
+      }
+
+      function closeNav() {
+        document.getElementById("myNav").style.width = "0%";
+      }
+      function cargarNuevaPagina(r,titulo) {
+        closeNav();
+        document.getElementById("menu").innerHTML="&#9776"+titulo;
+        var iframe = document.getElementById("miFrame");
+        iframe.src = r;
+        iframe.style.display = "block";
+      }
+    </script>
+  </body>
+</html>
